@@ -1,0 +1,61 @@
+{
+  "version": "1.0",
+
+  "engagement_factors": {
+    "likes": 2.0,
+    "comments": 5.0,
+    "views": 0.1,
+    "shares": 8.0,
+    "saves": 6.0,
+    "reposts": 10.0
+  },
+
+  "authority_factors": {
+    "verified_bonus": 20.0,
+    "followers_weight": 0.00001
+  },
+
+  "component_weights": {
+  "engagement": 0.05,
+  "velocity": 0.15,
+  "momentum": 0.20,
+  "freshness": 0.10,
+  "authority": 0.05,
+  "diversity": 0.20,
+  "growth_rate": 0.15,
+  "topic_volume": 0.10
+},
+
+  "freshness": {
+    "half_life_hours": {
+      "1h": 0.5,
+      "6h": 2.0,
+      "24h": 8.0,
+      "7d": 48.0
+    }
+  },
+
+  "velocity": {
+    "min_age_hours": 0.083
+  },
+
+  "state_thresholds": {
+  "emerging_max_posts": 50,
+  "emerging_min_growth_rate": 1.0,
+  "rising_score_delta": 3.0,
+  "viral_score_threshold": 80.0,
+  "viral_velocity_threshold": 30000.0,
+  "stable_band": 2.0,
+  "hysteresis_cycles": 2
+},
+
+"fraud": {
+  "penalty": 0.05
+},
+
+"quality": {
+  "min_followers": 10,
+  "min_engagement": 1,
+  "min_posts_for_topic": 2
+}
+}

@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+venv/
+
+# Local environment
+.env
+.env.*
+
+# Database / local runtime artifacts
+trend_detection.db
+*.sqlite3
+
+# IDE / OS noise
+.vscode/
+.DS_Store
+Thumbs.db

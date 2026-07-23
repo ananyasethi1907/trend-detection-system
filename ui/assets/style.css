@@ -1,0 +1,29 @@
+/* Reduce top padding */
+
+.block-container {
+    padding-top: 1.5rem;
+}
+
+/* Metric cards */
+
+[data-testid="stMetric"] {
+    background: #1f2937;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #374151;
+}
+
+/* Tables */
+
+[data-testid="stDataFrame"] {
+    border-radius: 12px;
+}
+
+/* Buttons */
+
+.stButton button {
+    width: 100%;
+    border-radius: 10px;
+    height: 45px;
+    font-weight: 600;
+}
