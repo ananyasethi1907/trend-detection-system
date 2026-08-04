@@ -7,6 +7,23 @@ from src.db.models import Account, Post
 class PostStorage:
 
     @staticmethod
+    def parse_datetime(value):
+        """
+        Accept both ISO strings and datetime objects.
+        """
+
+        if value is None:
+            return None
+
+        if isinstance(value, datetime):
+            return value
+
+        if isinstance(value, str):
+            return datetime.fromisoformat(value)
+
+        return value
+
+    @staticmethod
     def upsert_account(post: dict):
 
         session = SessionLocal()
@@ -35,9 +52,7 @@ class PostStorage:
                     account.is_verified
                 )
 
-                account.last_updated = (
-                    datetime.utcnow()
-                )
+                account.last_updated = datetime.utcnow()
 
             else:
 
@@ -111,16 +126,17 @@ class PostStorage:
                     existing_post.saves
                 )
 
-                scraped_at = post.get("scraped_at")
-
-                if isinstance(scraped_at, str):
-                    scraped_at = datetime.fromisoformat(scraped_at)
-
-                existing_post.scraped_at = scraped_at
-
-                existing_post.updated_at = (
-                    datetime.utcnow()
+                existing_post.scraped_at = PostStorage.parse_datetime(
+                    post.get("scraped_at")
                 )
+
+                # Uncomment after adding "source" column
+                # existing_post.source = post.get(
+                #     "source",
+                #     existing_post.source
+                # )
+
+                existing_post.updated_at = datetime.utcnow()
 
             else:
 
@@ -133,9 +149,7 @@ class PostStorage:
 
                     post_id=post["post_id"],
 
-                    account_id=post[
-                        "account_id"
-                    ],
+                    account_id=post["account_id"],
 
                     content_type=post.get(
                         "content_type"
@@ -190,13 +204,19 @@ class PostStorage:
                         "geotag_confidence"
                     ),
 
-                    published_at=datetime.fromisoformat(
+                    published_at=PostStorage.parse_datetime(
                         post["published_at"]
                     ),
 
-                    scraped_at=datetime.fromisoformat(
+                    scraped_at=PostStorage.parse_datetime(
                         post["scraped_at"]
-                    )
+                    ),
+
+                    # Uncomment after adding "source" column
+                    # source=post.get(
+                    #     "source",
+                    #     "instagram"
+                    # )
                 )
 
                 session.add(

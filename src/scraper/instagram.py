@@ -1,23 +1,19 @@
-# src/scraper/instagram.py
-
 import json
-
+import os
 from datetime import datetime
 from typing import Dict
 from typing import List
+from dotenv import load_dotenv
 
 from scrapfly import (
     ScrapflyClient,
     ScrapeConfig
 )
 
-
-SCRAPFLY_API_KEY = (
-    "scp-test-dc52e22937664354ac0125a79ee215c0"
-)
+load_dotenv()
 
 client = ScrapflyClient(
-    key=SCRAPFLY_API_KEY
+    key=os.getenv("SCRAPFLY_API_KEY")
 )
 
 

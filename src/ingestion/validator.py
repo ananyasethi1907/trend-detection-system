@@ -90,16 +90,14 @@ class PostValidator:
         ]
 
         if (
-            post["followers_count"]
-            <
-            min_followers
+            post.get("source") != "reddit"
+            and post["followers_count"] < min_followers
         ):
 
             return (
                 False,
                 "Below follower threshold"
             )
-
         engagement = (
 
             post.get("likes", 0)

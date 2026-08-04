@@ -67,6 +67,16 @@ st.divider()
 
 st.subheader("Pipeline Actions")
 
+source = st.radio(
+    "Select Data Source",
+    [
+        "Instagram",
+        "Reddit",
+        "Both"
+    ],
+    horizontal=True
+)
+
 col1, col2 = st.columns(2)
 
 with col1:
@@ -75,13 +85,36 @@ with col1:
         "🚀 Run Data Ingestion",
         use_container_width=True
     ):
-        run_script("run_ingestion.py")
+
+        if source == "Instagram":
+
+            run_script(
+                "run_ingestion.py"
+            )
+
+        elif source == "Reddit":
+
+            run_script(
+                "run_reddit_ingestion.py"
+            )
+
+        else:
+
+            run_script(
+                "run_ingestion.py"
+            )
+
+            run_script(
+                "run_reddit_ingestion.py"
+            )
 
     if st.button(
         "🧠 Run NLP Pipeline",
         use_container_width=True
     ):
-        run_script("run_nlp.py")
+        run_script(
+            "run_nlp.py"
+        )
 
 with col2:
 
@@ -89,13 +122,17 @@ with col2:
         "📈 Calculate Trends",
         use_container_width=True
     ):
-        run_script("calculate_trends.py")
+        run_script(
+            "calculate_trends.py"
+        )
 
     if st.button(
         "🗑 Reset Topics",
         use_container_width=True
     ):
-        run_script("reset_topics.py")
+        run_script(
+            "reset_topics.py"
+        )
 
 st.divider()
 
@@ -103,9 +140,10 @@ st.info(
     """
 Run the pipeline in the following order:
 
-1. Data Ingestion
-2. NLP Pipeline
-3. Calculate Trends
+1. Select Instagram, Reddit, or Both.
+2. Run Data Ingestion.
+3. Run NLP Pipeline.
+4. Calculate Trends.
 
 Reset Topics only when starting a fresh analysis.
 """

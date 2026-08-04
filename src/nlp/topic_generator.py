@@ -24,10 +24,6 @@ class TopicGenerator:
 
         )
 
-        if not candidates:
-
-            return None
-
         topic = CanonicalSelector.select(
 
             candidates,

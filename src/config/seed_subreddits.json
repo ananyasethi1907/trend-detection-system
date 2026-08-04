@@ -1,0 +1,31 @@
+{
+    "subreddits": [
+        "news",
+        "worldnews",
+        "inthenews",
+
+        "technology",
+        "gadgets",
+        "MachineLearning",
+        "OpenAI",
+
+        "science",
+        "Futurology",
+
+        "business",
+        "economy",
+
+        "entertainment",
+        "movies",
+        "television",
+        "Music",
+        "popculturechat",
+
+        "sports",
+        "cricket",
+        "soccer",
+
+        "india",
+        "IndianNews"
+    ]
+}

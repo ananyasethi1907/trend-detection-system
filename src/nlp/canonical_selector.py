@@ -12,9 +12,36 @@ class CanonicalSelector:
         entities,
         caption=None
     ):
-
         if not candidates:
+
             print("[CanonicalSelector] No candidates found.")
+
+            ####################################################
+            # Still try the LLM using the caption
+            ####################################################
+
+            if caption:
+
+                print("Sending caption to LLM...\n")
+
+                llm_result = LLMCanonicalResolver.resolve(
+
+                    caption,
+
+                    []
+
+                )
+
+                print("\n============== LLM RESULT ==============")
+                print(llm_result)
+                print("========================================\n")
+
+                if isinstance(llm_result, str):
+
+                    print("[CanonicalSelector] Using LLM headline.\n")
+
+                    return llm_result
+
             return None
 
         scored = []

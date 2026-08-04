@@ -288,3 +288,9 @@ class TrendScore(Base):
         Float,
         nullable=True
     )
+
+    source: Mapped[str] = mapped_column(
+    String(20),
+    nullable=False,
+    default="instagram"
+)
