@@ -1,372 +1,238 @@
-Social Media Trend Detection System
-Overview
+# 🚀 Social Media Trend Detection System
 
-The Social Media Trend Detection System is a Python-based application that identifies emerging trends by collecting data from multiple social media platforms, processing the content using Natural Language Processing (NLP), and calculating trend scores based on user engagement and content freshness.
+A modular trend detection platform that collects posts from **Instagram** and **Reddit**, processes them using **Natural Language Processing (NLP)**, and identifies trending topics based on engagement, freshness, and discussion patterns.
 
-The system currently supports:
+---
 
-Instagram
-Reddit
+## ✨ Features
 
-Both platforms feed into a common processing pipeline, allowing trends to be analyzed using a unified architecture.
+- 📸 Instagram data ingestion
+- 👽 Reddit data ingestion
+- 🧹 Data validation pipeline
+- 🗄️ SQLite database using SQLAlchemy
+- 🧠 NLP-based topic extraction
+- 🤖 LLM-assisted canonical topic generation
+- 📌 Automatic topic assignment
+- 📈 Trend score calculation
+- 📊 Interactive Streamlit dashboard
 
-Features
-Instagram post scraping using ScrapFly
-Reddit post scraping from configurable subreddits
-Unified data ingestion pipeline
-Data validation
-SQLite database storage using SQLAlchemy
-Entity extraction
-Keyword extraction
-AI-assisted canonical topic generation
-Topic assignment
-Trend score calculation
-Interactive Streamlit dashboard
+---
 
+## 🏗️ Architecture
 
-Project Architecture
-+--------------------+
-|  Instagram Scraper |
-+--------------------+
-          |
-          |
-+--------------------+
-|    Reddit Scraper   |
-+--------------------+
-          |
-          ▼
-+----------------------+
-|  Data Ingestion Layer |
-+----------------------+
-          |
-          ▼
-+----------------------+
-|      Validation      |
-+----------------------+
-          |
-          ▼
-+----------------------+
-|    Database Storage  |
-+----------------------+
-          |
-          ▼
-+----------------------+
-|     NLP Pipeline     |
-+----------------------+
-          |
-          ▼
-+----------------------+
-| Topic Assignment     |
-+----------------------+
-          |
-          ▼
-+----------------------+
-| Trend Score Engine   |
-+----------------------+
-          |
-          ▼
-+----------------------+
-| Streamlit Dashboard  |
-+----------------------+
+```text
+                 Instagram
+                      │
+                      │
+                 Reddit
+                      │
+                      ▼
+              Data Ingestion
+                      │
+                      ▼
+                 Validation
+                      │
+                      ▼
+                 Database
+                      │
+                      ▼
+               NLP Pipeline
+                      │
+                      ▼
+             Topic Assignment
+                      │
+                      ▼
+            Trend Score Engine
+                      │
+                      ▼
+             Streamlit Dashboard
+```
 
+---
 
-Technology Stack
-Backend
-Python 3.x
-SQLAlchemy
-SQLite
-NLP
-Entity Extraction
-Keyword Extraction
-LLM-assisted Canonical Topic Generation
-Data Collection
-ScrapFly
-Instagram Web API
-Reddit HTML Parsing
-Dashboard
-Streamlit
+## 📂 Project Structure
 
-
-Project Structure
+```text
 trend-detection/
-
-│
-├── scripts/
-│   ├── run_ingestion.py
-│   ├── run_reddit_ingestion.py
-│   ├── run_nlp.py
-│   ├── calculate_trends.py
-│   └── reset_topics.py
-│
-├── src/
-│
-│   ├── scraper/
-│   │     ├── instagram.py
-│   │     └── reddit.py
-│   │
-│   ├── ingestion/
-│   │     ├── storage.py
-│   │     └── validator.py
-│   │
-│   ├── nlp/
-│   │     ├── entity_extractor.py
-│   │     ├── keyword_extractor.py
-│   │     ├── candidate_generator.py
-│   │     ├── canonical_selector.py
-│   │     ├── topic_generator.py
-│   │     └── topic_assignment.py
-│   │
-│   ├── trends/
-│   │     ├── engagement_score.py
-│   │     ├── freshness_score.py
-│   │     ├── velocity_score.py
-│   │     ├── diversity_score.py
-│   │     └── topic_trend_score_engine.py
-│   │
-│   ├── db/
-│   │     ├── models.py
-│   │     └── connection.py
-│   │
-│   ├── config/
-│   │     ├── scoring_config.json
-│   │     ├── seed_accounts.json
-│   │     └── seed_subreddits.json
-│   │
-│   └── ai/
-│         └── llm_canonical_resolver.py
 │
 ├── dashboard/
+├── scripts/
+├── src/
+│   ├── ai/
+│   ├── config/
+│   ├── db/
+│   ├── ingestion/
+│   ├── nlp/
+│   ├── scraper/
+│   └── trends/
 │
+├── requirements.txt
 └── README.md
+```
 
+---
 
-Installation
+## ⚙️ Installation
 
 Clone the repository
 
-git clone <repository_url>
-
-Navigate into the project
-
+```bash
+git clone <repository-url>
 cd trend-detection
+```
 
 Install dependencies
 
+```bash
 pip install -r requirements.txt
-Environment Variables
+```
 
-Create a .env file.
+Create a `.env` file
 
-Example:
-
+```env
 SCRAPFLY_API_KEY=your_scrapfly_api_key
 OPENAI_API_KEY=your_openai_api_key
-Configuration
-Instagram Accounts
+```
 
-Located in
+---
 
-src/config/seed_accounts.json
+## ▶️ Running the Project
 
-Example
+### Instagram Ingestion
 
-{
-    "accounts": [
-        "pagesix",
-        "the.estd"
-    ]
-}
-Reddit Communities
-
-Located in
-
-src/config/seed_subreddits.json
-
-Example
-
-{
-    "subreddits": [
-        "technology",
-        "MachineLearning",
-        "news",
-        "india"
-    ]
-}
-
-
-Running the Project
-Instagram Ingestion
+```bash
 python -m scripts.run_ingestion
-Reddit Ingestion
+```
+
+### Reddit Ingestion
+
+```bash
 python -m scripts.run_reddit_ingestion
-NLP Pipeline
+```
+
+### NLP Pipeline
+
+```bash
 python -m scripts.run_nlp
-Trend Calculation
+```
+
+### Trend Calculation
+
+```bash
 python -m scripts.calculate_trends
-Streamlit Dashboard
+```
+
+### Dashboard
+
+```bash
 streamlit run Home.py
+```
 
-(Replace Home.py with your application's entry file if different.)
+---
 
-Data Pipeline
-Step 1 – Data Collection
+## 🧠 NLP Pipeline
 
-The system collects posts from:
+Each post passes through the following stages:
 
-Instagram accounts
-Reddit subreddits
-Step 2 – Validation
-
-Each post is validated by checking:
-
-Required fields
-Timestamp validity
-Time window
-Engagement threshold
-Platform-specific quality checks
-Step 3 – Database Storage
-
-Validated posts are stored in:
-
-Accounts
-Posts
-
-Topic information is later stored in:
-
-Topics
-PostTopicMap
-TrendScores
-Step 4 – NLP Pipeline
-
-Each caption is processed through:
-
+```text
 Caption
-
-↓
-
+   │
+   ▼
 Entity Extraction
-
-↓
-
+   │
+   ▼
 Keyword Extraction
-
-↓
-
+   │
+   ▼
 Candidate Generation
-
-↓
-
-Canonical Topic Selection (LLM + Rule-based)
-
-↓
-
+   │
+   ▼
+Canonical Topic Generation
+   │
+   ▼
 Topic Validation
-
-↓
-
+   │
+   ▼
 Topic Assignment
-Trend Score Calculation
+```
 
-Each topic is assigned a trend score using four independent metrics.
+---
 
-Engagement
+## 📈 Trend Score Calculation
 
-Measures popularity based on:
+The final trend score combines four independent metrics:
 
-Likes
-Comments
-Views
-Shares
-Saves
-Freshness
+| Metric | Purpose |
+|---------|---------|
+| Engagement | Likes, comments, views |
+| Freshness | Recency of posts |
+| Velocity | Posting activity |
+| Diversity | Number of unique contributors |
 
-Measures recency of activity.
+**Final Score**
 
-Recent posts receive higher freshness scores.
-
-Velocity
-
-Measures how rapidly discussion around a topic is growing.
-
-Diversity
-
-Measures discussion spread across:
-
-Multiple accounts
-Different posts
-Metadata diversity
-Final Formula
-Trend Score
-
-=
-
+```text
 0.45 × Engagement
++ 0.30 × Freshness
++ 0.15 × Velocity
++ 0.10 × Diversity
+```
 
-+
+---
 
-0.30 × Freshness
-
-+
-
-0.15 × Velocity
-
-+
-
-0.10 × Diversity
-Database Schema
-Accounts
-
-Stores account information.
-
-Posts
-
-Stores all Instagram and Reddit posts.
-
-Topics
-
-Stores canonical topics generated by the NLP pipeline.
-
-PostTopicMap
-
-Maps posts to their corresponding topics.
-
-TrendScores
-
-Stores calculated trend scores.
-
-Dashboard
+## 📊 Dashboard
 
 The Streamlit dashboard provides:
 
-Pipeline Control
-Dashboard Statistics
-Topic Explorer
-Trend Explorer
-Account Explorer
-Post Explorer
-Analytics
+- Pipeline Control
+- Dashboard Statistics
+- Topics
+- Trends
+- Posts
+- Accounts
+- Analytics
 
-Users can:
+---
 
-Run Instagram ingestion
-Run Reddit ingestion
-Execute the NLP pipeline
-Calculate trend scores
-Reset topics
-Future Improvements
-Support for Twitter/X integration
-Additional social media platforms
-Sentiment Analysis
-Topic clustering
-Automatic category classification
-Trend forecasting
-Real-time streaming ingestion
-REST API support
-Dashboard filtering by source and category
-Contributors
+## 🔧 Configuration
 
-Developed as part of an internship project focused on building a scalable social media trend detection platform using data ingestion, NLP, and trend analytics.
+Instagram accounts:
 
-License
+```
+src/config/seed_accounts.json
+```
 
-This project is intended for educational and internship purposes. License terms may be updated according to organizational requirements.
+Reddit communities:
+
+```
+src/config/seed_subreddits.json
+```
+
+---
+
+## 🚀 Future Improvements
+
+- Twitter/X integration
+- Sentiment Analysis
+- Topic clustering
+- REST API
+- Real-time streaming
+- Additional social media platforms
+
+---
+
+## 👨‍💻 Tech Stack
+
+- Python
+- Streamlit
+- SQLAlchemy
+- SQLite
+- ScrapFly
+- OpenAI API
+- NLP
+
+---
+
+## 📄 License
+
+This project was developed as part of an internship for educational and research purposes.
