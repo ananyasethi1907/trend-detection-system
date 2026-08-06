@@ -1,20 +1,20 @@
-# 🚀 Social Media Trend Detection System
+﻿# 🚀 Social Media Trend Detection System
 
-A modular trend detection platform that collects posts from **Instagram** and **Reddit**, processes them using **Natural Language Processing (NLP)**, and identifies trending topics based on engagement, freshness, and discussion patterns.
+The Social Media Trend Detection System is a Python-based project that collects posts from Instagram and Reddit, processes them using Natural Language Processing (NLP), and identifies trending topics using engagement, freshness, velocity, and diversity metrics.
 
 ---
 
 ## ✨ Features
 
-- 📸 Instagram data ingestion
-- 👽 Reddit data ingestion
-- 🧹 Data validation pipeline
-- 🗄️ SQLite database using SQLAlchemy
-- 🧠 NLP-based topic extraction
-- 🤖 LLM-assisted canonical topic generation
-- 📌 Automatic topic assignment
-- 📈 Trend score calculation
-- 📊 Interactive Streamlit dashboard
+- Instagram post scraping using ScrapFly
+- Reddit post scraping from configurable subreddits
+- Unified data ingestion pipeline
+- Data validation and quality checks
+- SQLite storage using SQLAlchemy
+- Entity extraction and keyword extraction
+- AI-assisted canonical topic generation
+- Topic assignment and trend scoring
+- Interactive Streamlit dashboard
 
 ---
 
@@ -55,7 +55,8 @@ A modular trend detection platform that collects posts from **Instagram** and **
 ```text
 trend-detection/
 │
-├── dashboard/
+├── docs/
+├── infra/
 ├── scripts/
 ├── src/
 │   ├── ai/
@@ -64,9 +65,8 @@ trend-detection/
 │   ├── ingestion/
 │   ├── nlp/
 │   ├── scraper/
-│   └── trends/
-│
-├── requirements.txt
+│   ├── trends/
+│   └── ui/
 └── README.md
 ```
 
@@ -74,20 +74,24 @@ trend-detection/
 
 ## ⚙️ Installation
 
-Clone the repository
+Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/ananyasethi1907/trend-detection-system.git
 cd trend-detection
 ```
 
-Install dependencies
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Create a `.env` file
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file with your API keys:
 
 ```env
 SCRAPFLY_API_KEY=your_scrapfly_api_key
@@ -122,75 +126,13 @@ python -m scripts.run_nlp
 python -m scripts.calculate_trends
 ```
 
-### Dashboard
+### Streamlit Dashboard
 
 ```bash
-streamlit run Home.py
+python -m streamlit run ui/app.py
 ```
 
----
-
-## 🧠 NLP Pipeline
-
-Each post passes through the following stages:
-
-```text
-Caption
-   │
-   ▼
-Entity Extraction
-   │
-   ▼
-Keyword Extraction
-   │
-   ▼
-Candidate Generation
-   │
-   ▼
-Canonical Topic Generation
-   │
-   ▼
-Topic Validation
-   │
-   ▼
-Topic Assignment
-```
-
----
-
-## 📈 Trend Score Calculation
-
-The final trend score combines four independent metrics:
-
-| Metric | Purpose |
-|---------|---------|
-| Engagement | Likes, comments, views |
-| Freshness | Recency of posts |
-| Velocity | Posting activity |
-| Diversity | Number of unique contributors |
-
-**Final Score**
-
-```text
-0.45 × Engagement
-+ 0.30 × Freshness
-+ 0.15 × Velocity
-+ 0.10 × Diversity
-```
-
----
-
-## 📊 Dashboard
-
-The Streamlit dashboard provides:
-
-- Pipeline Control
-- Dashboard Statistics
-- Topics
-- Trends
-- Posts
-- Accounts
-- Analytics
+> Replace `ui/app.py` with your application entry file if different.
 
 ---
 
@@ -198,26 +140,50 @@ The Streamlit dashboard provides:
 
 Instagram accounts:
 
-```
+```text
 src/config/seed_accounts.json
 ```
 
 Reddit communities:
 
-```
+```text
 src/config/seed_subreddits.json
 ```
 
 ---
 
-## 🚀 Future Improvements
+## 🧠 Data Pipeline
 
-- Twitter/X integration
-- Sentiment Analysis
-- Topic clustering
-- REST API
-- Real-time streaming
-- Additional social media platforms
+1. Data Collection
+   - Instagram accounts
+   - Reddit subreddits
+2. Validation
+   - Required fields
+   - Timestamp validity
+   - Engagement and platform-specific checks
+3. Storage
+   - Accounts
+   - Posts
+   - Topics
+   - Trend scores
+4. NLP Pipeline
+   - Entity extraction
+   - Keyword extraction
+   - Candidate generation
+   - Canonical topic generation
+   - Topic validation
+   - Topic assignment
+
+---
+
+## 📈 Trend Score Calculation
+
+The final trend score is built from four metrics:
+
+- Engagement: likes, comments, views, shares, saves
+- Freshness: recency of posts
+- Velocity: rate of discussion growth
+- Diversity: contributions from unique sources
 
 ---
 
@@ -235,4 +201,4 @@ src/config/seed_subreddits.json
 
 ## 📄 License
 
-This project was developed as part of an internship for educational and research purposes.
+This project is developed for educational and research purposes.
