@@ -95,7 +95,7 @@ Create a `.env` file with your API keys:
 
 ```env
 SCRAPFLY_API_KEY=your_scrapfly_api_key
-OPENAI_API_KEY=your_openai_api_key
+GROQ_API_KEY=your_groq_api_key
 ```
 
 ---
@@ -194,7 +194,7 @@ The final trend score is built from four metrics:
 - SQLAlchemy
 - SQLite
 - ScrapFly
-- OpenAI API
+- GRO API
 - NLP
 
 ---
