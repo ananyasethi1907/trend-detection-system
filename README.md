@@ -194,7 +194,7 @@ The final trend score is built from four metrics:
 - SQLAlchemy
 - SQLite
 - ScrapFly
-- GRO API
+- GROQ API
 - NLP
 
 ---
