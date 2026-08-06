@@ -22,50 +22,54 @@ AI-assisted canonical topic generation
 Topic assignment
 Trend score calculation
 Interactive Streamlit dashboard
+
+
 Project Architecture
-                    +--------------------+
-                    |  Instagram Scraper |
-                    +--------------------+
-                              |
-                              |
-                    +--------------------+
-                    |    Reddit Scraper   |
-                    +--------------------+
-                              |
-                              ▼
-                   +----------------------+
-                   |  Data Ingestion Layer |
-                   +----------------------+
-                              |
-                              ▼
-                   +----------------------+
-                   |      Validation      |
-                   +----------------------+
-                              |
-                              ▼
-                   +----------------------+
-                   |    Database Storage  |
-                   +----------------------+
-                              |
-                              ▼
-                   +----------------------+
-                   |     NLP Pipeline     |
-                   +----------------------+
-                              |
-                              ▼
-                   +----------------------+
-                   | Topic Assignment     |
-                   +----------------------+
-                              |
-                              ▼
-                   +----------------------+
-                   | Trend Score Engine   |
-                   +----------------------+
-                              |
-                              ▼
-                   +----------------------+
-                   | Streamlit Dashboard  |
-                   +----------------------+
++--------------------+
+|  Instagram Scraper |
++--------------------+
+          |
+          |
++--------------------+
+|    Reddit Scraper   |
++--------------------+
+          |
+          ▼
++----------------------+
+|  Data Ingestion Layer |
++----------------------+
+          |
+          ▼
++----------------------+
+|      Validation      |
++----------------------+
+          |
+          ▼
++----------------------+
+|    Database Storage  |
++----------------------+
+          |
+          ▼
++----------------------+
+|     NLP Pipeline     |
++----------------------+
+          |
+          ▼
++----------------------+
+| Topic Assignment     |
++----------------------+
+          |
+          ▼
++----------------------+
+| Trend Score Engine   |
++----------------------+
+          |
+          ▼
++----------------------+
+| Streamlit Dashboard  |
++----------------------+
+
+
 Technology Stack
 Backend
 Python 3.x
@@ -81,6 +85,8 @@ Instagram Web API
 Reddit HTML Parsing
 Dashboard
 Streamlit
+
+
 Project Structure
 trend-detection/
 
@@ -132,6 +138,8 @@ trend-detection/
 ├── dashboard/
 │
 └── README.md
+
+
 Installation
 
 Clone the repository
@@ -184,6 +192,8 @@ Example
         "india"
     ]
 }
+
+
 Running the Project
 Instagram Ingestion
 python -m scripts.run_ingestion
